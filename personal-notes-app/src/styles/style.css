@@ -2,8 +2,8 @@
   --primary: #BB86FC;
   --primary-variant: #3700B3;
   --secondary: #03DAC6;
-  --background: #121212;
-  --surface: #121212;
+  --background: #202124;
+  --surface: #202124;
   --error: #CF6679;
   --warning: #F39C12;
   --on-background: #FFFFFF;
@@ -27,6 +27,7 @@
 
 a {
   color: var(--on-background);
+  text-decoration: none;
 }
 
 
@@ -55,8 +56,16 @@ header h1 {
 
 header .navigation ul li {
   display: inline-block;
-  font-size: 24px;
+  font-size: 18px;
   margin: 0 8px;
+}
+
+header .navigation ul li button {
+  font-size: 18px;
+  background: transparent;
+  color: var(--on-background);
+  cursor: pointer;
+  border: 0;
 }
 
 main {
@@ -130,8 +139,11 @@ main {
   margin-top: 36px;
   font-size: 18px;
 }
+.detail-page__body a {
+  text-decoration: underline;
+}
 
-.detail-page__action, .homepage__action, .add-new-page__action {
+.detail-page__action, .homepage__action, .add-new-page__action, .edit-page__action {
   position: fixed;
   display: flex;
   gap: 16px;
@@ -154,11 +166,11 @@ main {
   cursor: pointer;
 }
 
-.add-new-page__input {
+.add-new-page__input, .edit-page__input {
   margin-top: 32px;
 }
 
-.add-new-page__input .add-new-page__input__title {
+.add-new-page__input .add-new-page__input__title, .edit-page__input .edit-page__input__title {
   width: 100%;
   background-color: transparent;
   border: 0;
@@ -169,11 +181,11 @@ main {
   padding: 8px 0;
 }
 
-.add-new-page__input__title::placeholder {
+.add-new-page__input__title::placeholder, .edit-page__input__title::placeholder {
   color: var(--on-background-grey);
 }
 
-.add-new-page__input .add-new-page__input__body {
+.add-new-page__input .add-new-page__input__body, .edit-page__input .edit-page__input__body {
   width: 100%;
   background-color: transparent;
   border: 0;
@@ -182,6 +194,10 @@ main {
   font-size: 24px;
   padding: 8px 0;
   min-height: 500px;
+}
+
+.rdw-editor-toolbar, .rdw-dropdown-selectedtext {
+  color: #333333;
 }
 
 [data-placeholder]:empty::before {
