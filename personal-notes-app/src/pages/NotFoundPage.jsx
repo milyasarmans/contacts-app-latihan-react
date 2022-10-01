@@ -1,10 +1,10 @@
 import React from 'react'
-import NotFound from '../components/NotFound'
+import NotFoundMessage from '../components/NotFoundMessage'
 
 export default function NotFoundPage() {
   return (
     <section>
-      <NotFound />
+      <NotFoundMessage />
     </section>
   )
 }

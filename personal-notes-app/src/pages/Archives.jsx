@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ActionHome from '../components/ActionHome'
 import NoteListEmpty from '../components/NoteListEmpty'
-import NotesList from '../components/NoteList'
+import NoteList from '../components/NoteList'
 import { getArchivedNotes } from '../utils/local-data'
 
-export default function Index() {
+export default function IndexPage() {
   const [notes, setNotes] = useState([])
   const [search, setSearch] = useState('')
 
@@ -28,12 +28,12 @@ export default function Index() {
       <section className="search-bar">
         <input
           type="text"
-          placeholder="Cari berdasarkan judul ..."
+          placeholder="Masukkan judul yang dicari..."
           value={search}
           onChange={handleSearch}
         />
       </section>
-      {notes.length > 0 && <NotesList notes={notes} />}
+      {notes.length > 0 && <NoteList notes={notes} />}
       {notes.length === 0 && <NoteListEmpty />}
       <ActionHome />
     </section>

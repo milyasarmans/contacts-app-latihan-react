@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import NoteItem from './NoteItem'
 
-function NotesList({ notes }) {
+function NoteList({ notes }) {
   return (
     <section className="notes-list">
       {notes.map((note) => <NoteItem key={note.id} note={note} />)}
@@ -10,8 +10,8 @@ function NotesList({ notes }) {
   )
 }
 
-NotesList.propTypes = {
+NoteList.propTypes = {
   notes: PropTypes.oneOfType([PropTypes.array]).isRequired
 }
 
-export default NotesList
+export default NoteList

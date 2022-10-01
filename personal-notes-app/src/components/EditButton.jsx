@@ -9,7 +9,7 @@ function EditButton({ handleSave }) {
       <button
         className="action"
         type="button"
-        title="Simpan"
+        title="Save"
         onClick={() => handleSave()}
       >
         <HiCheck />

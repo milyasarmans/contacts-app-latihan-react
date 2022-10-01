@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { HiOutlineTrash } from 'react-icons/hi'
-import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi'
-import { AiOutlineEdit } from 'react-icons/ai'
+import { BiEdit, BiArchiveIn, BiArchiveOut } from 'react-icons/bi'
 import ActionPage from './ActionPage'
 
 function PageButton({
@@ -17,7 +16,7 @@ function PageButton({
           title="Edit"
           onClick={() => handleEdit()}
         >
-          <AiOutlineEdit />
+          <BiEdit />
         </button>
         <button
           className="action"
@@ -30,7 +29,7 @@ function PageButton({
         <button
           className="action"
           type="button"
-          title="Hapus"
+          title="Delete"
           onClick={() => handleDelete()}
         >
           <HiOutlineTrash />

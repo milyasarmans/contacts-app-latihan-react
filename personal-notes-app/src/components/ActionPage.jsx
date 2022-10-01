@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 function ActionPage({ page, children }) {
   return (
     <div className={`${page}__action`}>
-      {children}
+      { children }
     </div>
   )
 }

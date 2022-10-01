@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from '../utils'
 function Toggler() {
   const [theme, setTheme] = useState('dark')
 
-  const changeTheme = (val) => {
+  const swipe = (val) => {
     setTheme(val)
     const root = window.document.documentElement
     root.setAttribute('data-theme', val)
@@ -13,21 +13,19 @@ function Toggler() {
 
   useEffect(() => {
     if (localStorage.theme) {
-      changeTheme(localStorage.theme)
+      swipe(localStorage.theme)
     } else {
       localStorage.setItem('theme', 'dark')
-      changeTheme('dark')
+      swipe('dark')
     }
   }, [])
 
   return (
     <button
       type="button"
-      onClick={() => changeTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => swipe(theme === 'dark' ? 'light' : 'dark')}
     >
       {capitalizeFirstLetter(theme)}
-      {' '}
-      Theme
     </button>
   )
 }
