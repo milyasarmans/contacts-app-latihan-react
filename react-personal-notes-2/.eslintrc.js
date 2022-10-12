@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 module.exports = {
   env: {
     browser: true,
@@ -24,6 +23,8 @@ module.exports = {
       required: {
         some: ['nesting', 'id']
       }
-    }]
+    }],
+    'no-alert': ['off'],
+    'no-restricted-globals': ['error', 'event', 'fdescribe']
   }
 }

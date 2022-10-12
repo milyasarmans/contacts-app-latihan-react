@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { HiX, HiCheck } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
 import ActionPage from './ActionPage'
+import useLanguage from '../hooks/useLanguage'
 
 function AddButton({ handleSave }) {
+  const text = useLanguage('app')
   const navigate = useNavigate()
 
   return (
@@ -13,7 +15,7 @@ function AddButton({ handleSave }) {
         <button
           className="action"
           type="button"
-          title="Add"
+          title={text.cancel}
           onClick={() => navigate('/')}
         >
           <HiX />
@@ -21,7 +23,7 @@ function AddButton({ handleSave }) {
         <button
           className="action"
           type="button"
-          title="Add"
+          title={text.add}
           onClick={() => handleSave()}
         >
           <HiCheck />

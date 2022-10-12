@@ -1,27 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { HiOutlineTrash } from 'react-icons/hi'
-import { BiEdit, BiArchiveIn, BiArchiveOut } from 'react-icons/bi'
+import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi'
 import ActionPage from './ActionPage'
+import useLanguage from '../hooks/useLanguage'
 
 function PageButton({
-  archived, handleEdit, handleArchive, handleDelete
+  archived, handleArchive, handleDelete
 }) {
+  const text = useLanguage('app')
   return (
     <ActionPage page="detail-page">
       <>
         <button
           className="action"
           type="button"
-          title="Edit"
-          onClick={() => handleEdit()}
-        >
-          <BiEdit />
-        </button>
-        <button
-          className="action"
-          type="button"
-          title={archived ? 'Aktifkan' : 'Arsipkan'}
+          title={archived ? text.active : text.archive}
           onClick={() => handleArchive()}
         >
           {archived ? <BiArchiveOut /> : <BiArchiveIn />}
@@ -29,7 +23,7 @@ function PageButton({
         <button
           className="action"
           type="button"
-          title="Delete"
+          title={text.delete}
           onClick={() => handleDelete()}
         >
           <HiOutlineTrash />
@@ -41,7 +35,6 @@ function PageButton({
 
 PageButton.propTypes = {
   archived: PropTypes.bool.isRequired,
-  handleEdit: PropTypes.func.isRequired,
   handleArchive: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired
 }

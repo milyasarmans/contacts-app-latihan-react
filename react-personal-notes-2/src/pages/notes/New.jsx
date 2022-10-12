@@ -7,33 +7,40 @@ import {
 import draftToHtml from 'draftjs-to-html'
 import AddButton from '../../components/AddButton'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import { addNote } from '../../utils/local-data'
+import { addNote } from '../../utils/network-data'
+import useInput from '../../hooks/useInput'
+import useLanguage from '../../hooks/useLanguage'
 
 export default function New() {
   const navigate = useNavigate()
+  const text = useLanguage('app')
+  const textNote = useLanguage('notesNew')
 
-  const [form, setForm] = useState({
-    title: '',
-    body: EditorState.createWithContent(
+  const [title, setTitle] = useInput('')
+  const [body, setBody] = useState(
+    EditorState.createWithContent(
       ContentState.createFromBlockArray(
-        convertFromHTML('Ketikkan sesuatu...')
+        convertFromHTML(textNote.bodyPlaceholder)
       )
     )
-  })
+  )
 
-  const handleChange = (e) => {
-    setForm((data) => ({ ...data, title: e.target.value }))
-  }
-
-  const onEditorStateChange = (body) => {
-    setForm((data) => ({ ...data, body }))
+  const onEditorStateChange = (val) => {
+    setBody(val)
   }
 
   const handleSave = () => {
-    const { title } = form
-    const body = draftToHtml(convertToRaw(form.body.getCurrentContent()))
-    addNote({ title, body })
-    navigate('/')
+    const bodyParsed = draftToHtml(convertToRaw(body.getCurrentContent()))
+    addNote({ title, body: bodyParsed })
+      .then((res) => {
+        if (!res.error) {
+          alert(textNote.msgSuccess)
+          navigate('/')
+        }
+      })
+      .catch(() => {
+        alert(text.msg.error)
+      })
   }
 
   return (
@@ -41,12 +48,12 @@ export default function New() {
       <div className="add-new-page__input">
         <input
           className="add-new-page__input__title"
-          placeholder="Judul"
-          value={form.title}
-          onChange={handleChange}
+          placeholder={textNote.titlePlaceholder}
+          value={title}
+          onChange={setTitle}
         />
         <Editor
-          editorState={form.body}
+          editorState={body}
           toolbarClassName="toolbarClassName"
           wrapperClassName="wrapperClassName"
           editorClassName="editorClassName"
